@@ -10,8 +10,10 @@
 <body>
   <h1>To-Do List</h1>
 
-  <input id="todo-input" placeholder="New task" />
-  <button id="add-btn">Add</button>
+  <div id="input-row">
+    <input id="todo-input" placeholder="New task" />
+    <button id="add-btn">Add</button>
+  </div>
 
   <ul id="todo-list"></ul>
 
@@ -24,14 +26,16 @@
 
     function render() {
       list.innerHTML = "";
+
       todos.forEach((text, index) => {
         const li = document.createElement("li");
+
         const span = document.createElement("span");
         span.textContent = text;
 
         const delBtn = document.createElement("button");
-        delBtn.textContent = "Delete";
         delBtn.className = "delete";
+        delBtn.textContent = "✕";
         delBtn.onclick = () => {
           todos.splice(index, 1);
           render();
@@ -46,6 +50,7 @@
     addBtn.onclick = () => {
       const text = input.value.trim();
       if (!text) return;
+
       todos.push(text);
       input.value = "";
       render();
