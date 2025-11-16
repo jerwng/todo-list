@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple To-Do (Frontend Only)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>To-Do List</h1>
+
+  <input id="todo-input" placeholder="New task" />
+  <button id="add-btn">Add</button>
+
+  <ul id="todo-list"></ul>
+
+  <script>
+    const input = document.getElementById("todo-input");
+    const addBtn = document.getElementById("add-btn");
+    const list = document.getElementById("todo-list");
+
+    let todos = [];
+
+    function render() {
+      list.innerHTML = "";
+      todos.forEach((text, index) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.textContent = text;
+
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+        delBtn.className = "delete";
+        delBtn.onclick = () => {
+          todos.splice(index, 1);
+          render();
+        };
+
+        li.appendChild(span);
+        li.appendChild(delBtn);
+        list.appendChild(li);
+      });
+    }
+
+    addBtn.onclick = () => {
+      const text = input.value.trim();
+      if (!text) return;
+      todos.push(text);
+      input.value = "";
+      render();
+    };
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") addBtn.click();
+    });
+
+    render();
+  </script>
+</body>
+
+</html>

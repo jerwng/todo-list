@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+#todo-input {
+  width: 70%;
+  padding: 4px;
+}
+
+#add-btn {
+  padding: 4px 8px;
+}
+
+li {
+  margin: 4px 0;
+}
+
+button.delete {
+  margin-left: 8px;
+}
