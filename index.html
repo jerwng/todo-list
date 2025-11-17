@@ -33,16 +33,7 @@
         const span = document.createElement("span");
         span.textContent = text;
 
-        const delBtn = document.createElement("button");
-        delBtn.className = "delete";
-        delBtn.textContent = "✕";
-        delBtn.onclick = () => {
-          todos.splice(index, 1);
-          render();
-        };
-
         li.appendChild(span);
-        li.appendChild(delBtn);
         list.appendChild(li);
       });
     }
@@ -55,12 +46,6 @@
       input.value = "";
       render();
     };
-
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") addBtn.click();
-    });
-
-    render();
   </script>
 </body>
 
